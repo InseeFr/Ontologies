@@ -1,0 +1,163 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix insee: <http://rdf.insee.fr/def/base#> .
+
+#################################################################
+# Ontology
+#################################################################
+
+<http://rdf.insee.fr/def/base> a owl:Ontology, voaf:Vocabulary ;
+    dc:title "Vocabulaire commun INSEE"@fr , "INSEE common vocabulary"@en ;
+    rdfs:comment "Ce vocabulaire contient les termes communément utilisés à l'INSEE"@fr ;
+    rdfs:comment "This vocabulary contains terms commonly used at INSEE"@en ;
+    dc:contributor "Guillaume Duffes", "Marie-Hélène Kerouanton" ;
+    dc:creator "Franck Cotton" ;
+    vann:preferredNamespacePrefix "insee" ;
+    vann:preferredNamespaceUri <http://rdf.insee.fr/def/base#> ;
+    dc:rights "Copyright © 2016 INSEE" ;
+    cc:license <http://creativecommons.org/licenses/by/4.0/> ;
+    voaf:classNumber "nnnn"^^xsd:integer ;
+    voaf:propertyNumber "9"^^xsd:integer ;
+    owl:versionInfo "Version 0.1 - 2016-01-08" .
+
+
+#################################################################
+# Classes
+#################################################################
+
+# Pas de classe dans cette version
+
+
+#################################################################
+# Annotation properties
+#################################################################
+
+# Pas d'annotation dans cette version
+
+
+#################################################################
+# Data properties
+#################################################################
+
+# Instant de début de validité
+
+insee:validFrom a rdf:Property, owl:DatatypeProperty ;
+    rdfs:label "Valide depuis"@fr, "Valid from"@en ;
+    rdfs:comment "Instant de début de validité"@fr ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    rdfs:range xsd:dateTime .
+
+# Instant de fin de validité
+
+insee:validUntil a rdf:Property, owl:DatatypeProperty ;
+    rdfs:label "Valide jusqu'à"@fr , "Valid until"@en ;
+    rdfs:comment "Instant de fin de validité"@fr ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    rdfs:range xsd:dateTime .
+
+# Instant de publication
+
+insee:publishedOn a rdf:Property, owl:DatatypeProperty ;
+    rdfs:label "Publié à"@fr, "Published on"@en ;
+    rdfs:comment "Instant de publication"@fr ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    rdfs:range xsd:dateTime .
+
+
+#################################################################
+# Object properties
+#################################################################
+
+# Version de travail (vérifier que c'est utile)
+
+insee:hasWorkingVersion a rdf:Property, owl:ObjectProperty ;
+    rdfs:label "Version de travail"@fr, "Working version"@en ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    rdfs:subPropertyOf pav:hasVersion .
+
+# Dernière version publiée (vérifier que c'est utile)
+
+insee:hasLastPublishedVersion a rdf:Property, owl:ObjectProperty ;
+    rdfs:label "Dernière version publiée"@fr, "Last published version"@en ;
+	rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    rdfs:subPropertyOf pav:hasVersion .
+
+# Dernière version validée (vérifier que c'est utile)
+
+insee:hasLastValidatedVersion a rdf:Property, owl:ObjectProperty ;
+    rdfs:label "Dernière version validée"@fr, "Last validated version"@en ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    rdfs:subPropertyOf pav:hasVersion .
+
+# Document associé (pourrait être un seeAlso)
+# TODO Valider le nom, pourrait être un verbe
+
+insee:additionalMaterial a rdf:Property, owl:ObjectProperty ;
+    rdfs:label "Document lié"@fr, "Linked document"@en ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+
+# Document légal associé
+# TODO Valider le nom, pourrait être un verbe
+
+insee:legalMaterial a rdf:Property, owl:ObjectProperty ;
+    rdfs:label "Textes légaux"@fr, "Legal texts"@en ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    rdfs:subPropertyOf insee:additionalMaterial .
+
+# Statut de diffusion
+
+insee:disseminationStatus a rdf:Property, owl:ObjectProperty ;
+    rdfs:label "Statut de diffusion"@fr, "Dissemination status"@fr ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    rdfs:range
+        [ a owl:Restriction ;
+            owl:onProperty skos:inScheme ;
+            owl:hasValue <http://id.insee.fr/codes/base/statutsDiffusion/scheme>
+        ] .
+
+
+#################################################################
+# Concepts et Concept Schemes SKOS
+#################################################################
+
+# Statuts de diffusion
+
+# TODO Mettre ici ou sous id.insee.fr/concepts ?
+# TODO Ajouter des commentaires pour les modalités
+insee:StatutDiffusion a skos:Concept ;
+    rdfs:label "Statut de diffusion"@fr ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+
+<http://id.insee.fr/codes/base/statutsDiffusion/scheme> a skos:ConceptScheme ;
+    rdfs:label "Statuts de diffusion"@fr, "Dissemination statuses"@en ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+	
+<http://id.insee.fr/codes/base/statutDiffusion/Prive> a skos:Concept, insee:StatutDiffusion ;
+    skos:prefLabel "Privé"@fr ;
+    skos:inScheme <http://id.insee.fr/codes/base/statutsDiffusion/scheme> ;
+    skos:prefLabel "Privé"@fr ;
+    skos:notation "Prive" ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+
+<http://id.insee.fr/codes/base/statutDiffusion/PublicSpecifique> a skos:Concept, insee:StatutDiffusion ;
+    skos:prefLabel "Public spécifique"@fr ;
+    skos:inScheme <http://id.insee.fr/codes/base/statutsDiffusion/scheme> ;
+    skos:prefLabel "Privé"@fr ;
+    skos:notation "PublicSpecifique" ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+
+# TODO : peut-être plutôt 'Public général'
+<http://id.insee.fr/codes/base/statutDiffusion/PublicGenerique> a skos:Concept, insee:StatutDiffusion ;
+    skos:prefLabel "Privé"@fr ;
+    skos:inScheme <http://id.insee.fr/codes/base/statutsDiffusion/scheme> ;
+    skos:prefLabel "Privé"@fr ;
+    skos:notation "Prive" ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
