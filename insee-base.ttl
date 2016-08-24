@@ -24,9 +24,9 @@
     vann:preferredNamespaceUri <http://rdf.insee.fr/def/base#> ;
     dc:rights "Copyright © 2016 INSEE" ;
     cc:license <http://creativecommons.org/licenses/by/4.0/> ;
-    voaf:classNumber "nnnn"^^xsd:integer ;
-    voaf:propertyNumber "9"^^xsd:integer ;
-    owl:versionInfo "Version 0.1 - 2016-01-08" .
+    voaf:classNumber "0"^^xsd:integer ;
+    voaf:propertyNumber "11"^^xsd:integer ;
+    owl:versionInfo "Version 0.2 - 2016-08-24" .
 
 
 #################################################################
@@ -40,7 +40,17 @@
 # Annotation properties
 #################################################################
 
-# Pas d'annotation dans cette version
+# Ressemblances entre postes associés
+
+insee:similarityNote a rdf:Property, owl:AnnotationProperty ;
+    rdfs:label "Ressemblances entre postes associés"@fr, "Similarities between associated items"@en ;
+    rdfs:comment "Précise le contenu des ressemblances entre postes reliés par une association de concepts"@fr, "Details the content of the similarities between items linked by a concept association" ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+
+insee:differenceNote a rdf:Property, owl:AnnotationProperty ;
+    rdfs:label "Differences entre postes associés"@fr, "Differences between associated items"@en ;
+    rdfs:comment "Précise le contenu des différences entre postes reliés par une association de concepts"@fr, "Details the content of the differences between items linked by a concept association" ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
 
 
 #################################################################
