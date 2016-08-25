@@ -48,7 +48,7 @@ insee:similarityNote a rdf:Property, owl:AnnotationProperty ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
 
 insee:differenceNote a rdf:Property, owl:AnnotationProperty ;
-    rdfs:label "Differences entre postes associés"@fr, "Differences between associated items"@en ;
+    rdfs:label "Différences entre postes associés"@fr, "Differences between associated items"@en ;
     rdfs:comment "Précise le contenu des différences entre postes reliés par une association de concepts"@fr, "Details the content of the differences between items linked by a concept association" ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
 
