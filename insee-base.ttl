@@ -8,6 +8,7 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix pav: <http://purl.org/pav/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix insee: <http://rdf.insee.fr/def/base#> .
 
 #################################################################
@@ -24,16 +25,38 @@
     vann:preferredNamespaceUri <http://rdf.insee.fr/def/base#> ;
     dc:rights "Copyright © 2016 INSEE" ;
     cc:license <http://creativecommons.org/licenses/by/4.0/> ;
-    voaf:classNumber "0"^^xsd:integer ;
+    voaf:classNumber "4"^^xsd:integer ;
     voaf:propertyNumber "11"^^xsd:integer ;
-    owl:versionInfo "Version 0.2 - 2016-08-24" .
+    owl:versionInfo "Version 0.3 - 2017-02-23" .
 
 
 #################################################################
 # Classes
 #################################################################
 
-# Pas de classe dans cette version
+# Opérations statistiques, séries et familles d'opérations statistiques
+
+# TODO Link to gsbpm:StatisticalProductionActivity ?
+
+insee:StatisticalOperation a rdfs:Class, owl:Class;
+    rdfs:label "Statistical operation"@en, "Opération statistique"@fr ;
+    rdfs:subClassOf prov:Activity ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+
+# Convenience (abstract) class; use DC hasPart/isPartOf to link SOG and SO
+insee:StatisticalOperationGroup a rdfs:Class, owl:Class;
+    rdfs:label "Statistical operation group"@en, "Groupe d'opérations statistiques"@fr ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+
+insee:StatisticalOperationSeries a rdfs:Class, owl:Class;
+    rdfs:label "Statistical operation series"@en, "Série d'opérations statistiques"@fr ;
+    rdfs:subClassOf insee:StatisticalOperationGroup ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+
+insee:StatisticalOperationFamily a rdfs:Class, owl:Class;
+    rdfs:label "Statistical operation family"@en, "Famille d'opérations statistiques"@fr ;
+    rdfs:subClassOf insee:StatisticalOperationGroup ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
 
 
 #################################################################
@@ -44,12 +67,12 @@
 
 insee:similarityNote a rdf:Property, owl:AnnotationProperty ;
     rdfs:label "Ressemblances entre postes associés"@fr, "Similarities between associated items"@en ;
-    rdfs:comment "Précise le contenu des ressemblances entre postes reliés par une association de concepts"@fr, "Details the content of the similarities between items linked by a concept association" ;
+    rdfs:comment "Précise le contenu des ressemblances entre postes reliés par une association de concepts"@fr, "Details the content of the similarities between items linked by a concept association"@en ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
 
 insee:differenceNote a rdf:Property, owl:AnnotationProperty ;
     rdfs:label "Différences entre postes associés"@fr, "Differences between associated items"@en ;
-    rdfs:comment "Précise le contenu des différences entre postes reliés par une association de concepts"@fr, "Details the content of the differences between items linked by a concept association" ;
+    rdfs:comment "Précise le contenu des différences entre postes reliés par une association de concepts"@fr, "Details the content of the differences between items linked by a concept association"@en ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
 
 
