@@ -4,6 +4,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix cc: <http://creativecommons.org/ns#> .
@@ -25,9 +26,9 @@
     vann:preferredNamespaceUri <http://rdf.insee.fr/def/base#> ;
     dc:rights "Copyright © 2016 INSEE" ;
     cc:license <http://creativecommons.org/licenses/by/4.0/> ;
-    voaf:classNumber "4"^^xsd:integer ;
+    voaf:classNumber "7"^^xsd:integer ;
     voaf:propertyNumber "11"^^xsd:integer ;
-    owl:versionInfo "Version 0.3 - 2017-02-23" .
+    owl:versionInfo "Version 0.4 - 2017-07-11" .
 
 
 #################################################################
@@ -56,6 +57,23 @@ insee:StatisticalOperationSeries a rdfs:Class, owl:Class;
 insee:StatisticalOperationFamily a rdfs:Class, owl:Class;
     rdfs:label "Statistical operation family"@en, "Famille d'opérations statistiques"@fr ;
     rdfs:subClassOf insee:StatisticalOperationGroup ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+
+# Organisations statistiques, INS et autres autorités
+
+insee:StatisticalOrganization a rdfs:Class, owl:Class;
+    rdfs:label "Statistical organization"@en, "Organisation statistique"@fr ;
+    rdfs:subClassOf org:Organization ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+
+insee:NationalStatisticalInstitute a rdfs:Class, owl:Class;
+    rdfs:label "National statistical institute"@en, "Institut national de statistique"@fr ;
+    rdfs:subClassOf org:StatisticalOrganization ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+
+insee:OtherNationalAuthority a rdfs:Class, owl:Class;
+    rdfs:label "Other national authority"@en, "Autre autorité nationale"@fr ;
+    rdfs:subClassOf org:StatisticalOrganization ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
 
 
