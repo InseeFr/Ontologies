@@ -17,14 +17,14 @@
 #################################################################
 
 <http://rdf.insee.fr/def/base> a owl:Ontology, voaf:Vocabulary ;
-    dc:title "Vocabulaire commun INSEE"@fr , "INSEE common vocabulary"@en ;
+    dc:title "Vocabulaire de base INSEE"@fr , "INSEE base vocabulary"@en ;
     rdfs:comment "Ce vocabulaire contient les termes communément utilisés à l'INSEE"@fr ;
     rdfs:comment "This vocabulary contains terms commonly used at INSEE"@en ;
     dc:contributor "Guillaume Duffes", "Marie-Hélène Kerouanton" ;
     dc:creator "Franck Cotton" ;
     vann:preferredNamespacePrefix "insee" ;
     vann:preferredNamespaceUri <http://rdf.insee.fr/def/base#> ;
-    dc:rights "Copyright © 2016 INSEE" ;
+    dc:rights "Copyright © 2017 INSEE" ;
     cc:license <http://creativecommons.org/licenses/by/4.0/> ;
     voaf:classNumber "7"^^xsd:integer ;
     voaf:propertyNumber "11"^^xsd:integer ;
@@ -35,9 +35,8 @@
 # Classes
 #################################################################
 
-# Opérations statistiques, séries et familles d'opérations statistiques
-
-# TODO Link to gsbpm:StatisticalProductionActivity ?
+# Statistical operations and series or families of operations
+# TODO Link to gsbpm:StatisticalProductionActivity
 
 insee:StatisticalOperation a rdfs:Class, owl:Class;
     rdfs:label "Statistical operation"@en, "Opération statistique"@fr ;
@@ -59,7 +58,7 @@ insee:StatisticalOperationFamily a rdfs:Class, owl:Class;
     rdfs:subClassOf insee:StatisticalOperationGroup ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
 
-# Organisations statistiques, INS et autres autorités
+# Statistical organizations, National Statistical Institutes and other statistical authorities
 
 insee:StatisticalOrganization a rdfs:Class, owl:Class;
     rdfs:label "Statistical organization"@en, "Organisation statistique"@fr ;
