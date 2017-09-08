@@ -11,6 +11,7 @@
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix pav: <http://purl.org/pav/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#>
 @prefix insee: <http://rdf.insee.fr/def/base#> .
 
 #################################################################
@@ -39,44 +40,66 @@
 # Statistical operations and series or families of operations
 # TODO Link to gsbpm:StatisticalProductionActivity
 
-insee:StatisticalOperation a rdfs:Class, owl:Class;
+insee:StatisticalOperation a rdfs:Class, owl:Class ;
     rdfs:label "Statistical operation"@en, "Opération statistique"@fr ;
     rdfs:subClassOf prov:Activity ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
 
 # Convenience (abstract) class; use DC hasPart/isPartOf to link SOG and SO
-insee:StatisticalOperationGroup a rdfs:Class, owl:Class;
+insee:StatisticalOperationGroup a rdfs:Class, owl:Class ;
     rdfs:label "Statistical operation group"@en, "Groupe d'opérations statistiques"@fr ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
 
-insee:StatisticalOperationSeries a rdfs:Class, owl:Class;
+insee:StatisticalOperationSeries a rdfs:Class, owl:Class ;
     rdfs:label "Statistical operation series"@en, "Série d'opérations statistiques"@fr ;
     rdfs:subClassOf insee:StatisticalOperationGroup ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
 
-insee:StatisticalOperationFamily a rdfs:Class, owl:Class;
+insee:StatisticalOperationFamily a rdfs:Class, owl:Class ;
     rdfs:label "Statistical operation family"@en, "Famille d'opérations statistiques"@fr ;
     rdfs:subClassOf insee:StatisticalOperationGroup ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
 
 # Statistical organizations, National Statistical Institutes and other statistical authorities
 
-insee:StatisticalOrganization a rdfs:Class, owl:Class;
+insee:StatisticalOrganization a rdfs:Class, owl:Class ;
     rdfs:label "Statistical organization"@en, "Organisation statistique"@fr ;
     rdfs:subClassOf org:Organization, prov:Organization, dcterms:Agent ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
 
-insee:NationalStatisticalInstitute a rdfs:Class, owl:Class;
+insee:NationalStatisticalInstitute a rdfs:Class, owl:Class ;
     rdfs:label "National statistical institute"@en, "Institut national de statistique"@fr ;
     rdfs:subClassOf org:StatisticalOrganization ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
 
-insee:OtherNationalAuthority a rdfs:Class, owl:Class;
+insee:OtherNationalAuthority a rdfs:Class, owl:Class ;
     rdfs:label "Other national authority"@en, "Autre autorité nationale"@fr ;
     rdfs:subClassOf org:StatisticalOrganization ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
 
+# Statistical products
 
+insee:StatisticalProduct a rdfs:Class, owl:Class ;
+    rdfs:label "Statistical product"@en, "Produit statistique"@fr ;
+    rdfs:subClassOf prov:Entity ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+
+insee:StatisticalDataset a rdfs:Class, owl:Class ;
+    rdfs:label "Statistical dataset"@en, "Jeu de données statistiques"@fr ;
+    rdfs:subClassOf insee:StatisticalProduct, dcat:Dataset ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+
+insee:StatisticalIndicator a rdfs:Class, owl:Class ;
+    rdfs:label "Statistical indicator"@en, "Indicateur statistique"@fr ;
+    rdfs:subClassOf insee:StatisticalProduct ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+
+insee:TimeSeries a rdfs:Class, owl:Class ;
+    rdfs:label "Time series"@en, "Serie temporelle"@fr ;
+    rdfs:subClassOf insee:StatisticalDataset ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+
+	
 #################################################################
 # Annotation properties
 #################################################################
