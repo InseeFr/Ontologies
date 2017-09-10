@@ -11,7 +11,7 @@
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix pav: <http://purl.org/pav/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix dcat: <http://www.w3.org/ns/dcat#>
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix insee: <http://rdf.insee.fr/def/base#> .
 
 #################################################################
