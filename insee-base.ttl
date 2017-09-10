@@ -75,6 +75,7 @@ insee:NationalStatisticalInstitute a rdfs:Class, owl:Class ;
 insee:OtherNationalAuthority a rdfs:Class, owl:Class ;
     rdfs:label "Other national authority"@en, "Autre autorité nationale"@fr ;
     rdfs:subClassOf org:StatisticalOrganization ;
+	owl:disjointWith insee:NationalStatisticalInstitute ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
 
 # Statistical products
