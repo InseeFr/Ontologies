@@ -122,6 +122,16 @@ insee:differenceNote a rdf:Property, owl:AnnotationProperty ;
 # Data properties
 #################################################################
 
+# Characterization of a statistical organization or organization unit as a ministerial department
+
+insee:ministerialDepartment a rdf:Property, owl:DatatypeProperty ;
+    rdfs:label "service ministériel"@fr, "ministerial service"@en ;
+    rdfs:comment "Indicates if a organizational unit is a service of a ministry"@en ;
+    rdfs:comment "Indicate si un organisme statistique est un service d'un ministère"@fr ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    rdfs:domain insee:StatisticalOrganization ;
+    rdfs:range xsd:boolean .
+
 # Instant de début de validité
 
 insee:validFrom a rdf:Property, owl:DatatypeProperty ;
