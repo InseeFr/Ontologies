@@ -42,7 +42,6 @@ igeo:Arrondissement
               [ a owl:Restriction ;
                 owl:onClass igeo:Departement ;
                 owl:onProperty igeo:subdivisionDirecteDe ;
-                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
               ] ;
       rdfs:subClassOf
               [ a owl:Restriction ;
@@ -263,12 +262,7 @@ igeo:GroupementStatistiqueDeCommunes
       rdfs:label "Groupement statistique de communes"@fr ;
       rdfs:comment "Modélise des zonages divers d'intérêt statistique"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:subClassOf igeo:TerritoireStatistique ;
-      rdfs:subClassOf
-              [ a owl:Restriction ;
-                owl:onProperty igeo:subdivisionDirecte ;
-                owl:allValuesFrom igeo:Commune
-              ] .
+      rdfs:subClassOf igeo:TerritoireStatistique .
 
 igeo:PaysOuTerritoire
       a owl:Class ;
@@ -346,9 +340,10 @@ igeo:nom
 
 igeo:nomLong
       a owl:DatatypeProperty ;
-      rdfs:labelLong "nom"@fr ;
+      rdfs:label "nom long"@fr ;
+      rdfs:comment "Nom complet des pays"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:domain igeo:PaysOuTerritoire ;
+      rdfs:domain igeo:Pays ;
       rdfs:range xsd:token .
 
 igeo:nomSansArticle
