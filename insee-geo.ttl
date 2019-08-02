@@ -494,7 +494,7 @@ igeo:typeDIRIS
       a skos:ConceptScheme ;
       rdfs:label "Type d'EPCI"@fr ;
       rdfs:seeAlso igeo:TypeDEPCI ;
-      skos:hasTopConcept <http://id.insee.fr/codes/geo/typeDEPCI/CA> , <http://id.insee.fr/codes/geo/typeDEPCI/CC> , <http://id.insee.fr/codes/geo/typeDEPCI/CU> , <http://id.insee.fr/codes/geo/typeDEPCI/SAN> , <http://id.insee.fr/codes/geo/typeDEPCI/Metro> .
+      skos:hasTopConcept <http://id.insee.fr/codes/geo/typeDEPCI/CA> , <http://id.insee.fr/codes/geo/typeDEPCI/CC> , <http://id.insee.fr/codes/geo/typeDEPCI/CU> , <http://id.insee.fr/codes/geo/typeDEPCI/SAN> , <http://id.insee.fr/codes/geo/typeDEPCI/METRO> .
 
 <http://id.insee.fr/codes/geo/typeDEPCI/CA>
       a skos:Concept ;
@@ -524,12 +524,12 @@ igeo:typeDIRIS
       skos:prefLabel "Syndicat d'agglomération nouvelle"@fr ;
       skos:notation "SAN" .
 
-<http://id.insee.fr/codes/geo/typeDEPCI/Metro>
+<http://id.insee.fr/codes/geo/typeDEPCI/METRO>
       a skos:Concept ;
       a igeo:TypeDEPCI ;
       skos:inScheme <http://id.insee.fr/codes/geo/typesDEPCI> ;
       skos:prefLabel "Métropole"@fr ;
-      skos:notation "Metro" .
+      skos:notation "METRO" .
 
 <http://id.insee.fr/codes/geo/typesDIRIS>
       a skos:ConceptScheme ;
