@@ -42,12 +42,7 @@ igeo:Arrondissement
               [ a owl:Restriction ;
                 owl:onClass igeo:Departement ;
                 owl:onProperty igeo:subdivisionDirecteDe ;
-              ] ;
-      rdfs:subClassOf
-              [ a owl:Restriction ;
-                owl:allValuesFrom igeo:Commune ;
-                owl:onProperty igeo:subdivisionDirecte
-              ] .
+              ]  .
 
 igeo:ArrondissementMunicipal
       a owl:Class ;
@@ -79,11 +74,6 @@ igeo:CantonOuVille
       rdfs:comment "Dit aussi 'pseudo-canton', c'est un regroupement d'une ou plusieurs communes entières"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:subClassOf igeo:TerritoireStatistique ;
-      rdfs:subClassOf
-              [ a owl:Restriction ;
-                owl:onProperty igeo:subdivisionDirecte ;
-                owl:allValuesFrom igeo:Commune
-              ] ;
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:onClass igeo:Departement ;
@@ -144,7 +134,7 @@ igeo:Departement
               [ a owl:Restriction ;
                 owl:onClass igeo:Region ;
                 owl:onProperty igeo:subdivisionDirecteDe ;
-              ] ;
+              ] .
 
 igeo:CDCTE
       a owl:Class ;
@@ -156,19 +146,14 @@ igeo:CDCTE
               [ a owl:Restriction ;
                 owl:onClass igeo:Region ;
                 owl:onProperty igeo:subdivisionDirecteDe ;
-              ] ;
+              ] .
 
 igeo:Region
       a owl:Class ;
       rdfs:label "Région"@fr ;
       rdfs:comment "Région française"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:subClassOf igeo:NUTS2 , igeo:CirconscriptionAdministrative, igeo:CollectiviteTerritoriale ;
-      rdfs:subClassOf
-              [ a owl:Restriction ;
-                owl:onProperty igeo:subdivisionDirecte ;
-                owl:allValuesFrom (igeo:Departement igeo:CDCTE)
-              ] .
+      rdfs:subClassOf igeo:NUTS2 , igeo:CirconscriptionAdministrative, igeo:CollectiviteTerritoriale .
 
 igeo:AireUrbaine2010
       a owl:Class ;
@@ -211,7 +196,7 @@ igeo:GrandQuartier
               [ a owl:Restriction ;
                 owl:onClass igeo:Commune, igeo:ArrondissementMunicipal ;
                 owl:onProperty igeo:subdivisionDirecteDe ;
-              ] ;
+              ] .
 igeo:IRIS
       a owl:Class ;
       rdfs:label "Iris"@fr ;
