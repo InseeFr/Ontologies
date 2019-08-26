@@ -87,12 +87,14 @@ insee:OtherNationalAuthority a rdfs:Class, owl:Class ;
 insee:StatisticalProduct a rdfs:Class, owl:Class ;
     rdfs:label "Statistical product"@en, "Produit statistique"@fr ;
     rdfs:subClassOf prov:Entity ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base>
+    owl:sameAs coos:StatisticalProduct .
 
 insee:StatisticalDataset a rdfs:Class, owl:Class ;
     rdfs:label "Statistical dataset"@en, "Jeu de données statistiques"@fr ;
     rdfs:subClassOf insee:StatisticalProduct, dcat:Dataset ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base>
+    owl:sameAs coos:StatisticalDataset .
 
 insee:StatisticalIndicator a rdfs:Class, owl:Class ;
     rdfs:label "Statistical indicator"@en, "Indicateur statistique"@fr ;
