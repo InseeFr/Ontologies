@@ -161,13 +161,6 @@ insee:publishedOn a rdf:Property, owl:DatatypeProperty ;
 # Object properties
 #################################################################
 
-# Dernière version publiée (vérifier que c'est utile)
-
-insee:hasLastPublishedVersion a rdf:Property, owl:ObjectProperty ;
-    rdfs:label "Dernière version publiée"@fr, "Last published version"@en ;
-	rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
-    rdfs:subPropertyOf pav:hasVersion .
-
 # Dernière version validée (vérifier que c'est utile)
 
 insee:hasLastValidatedVersion a rdf:Property, owl:ObjectProperty ;
