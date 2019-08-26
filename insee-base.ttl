@@ -161,13 +161,6 @@ insee:publishedOn a rdf:Property, owl:DatatypeProperty ;
 # Object properties
 #################################################################
 
-# Version de travail (vérifier que c'est utile)
-
-insee:hasWorkingVersion a rdf:Property, owl:ObjectProperty ;
-    rdfs:label "Version de travail"@fr, "Working version"@en ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
-    rdfs:subPropertyOf pav:hasVersion .
-
 # Dernière version publiée (vérifier que c'est utile)
 
 insee:hasLastPublishedVersion a rdf:Property, owl:ObjectProperty ;
