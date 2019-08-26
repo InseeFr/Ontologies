@@ -44,7 +44,8 @@
 insee:StatisticalOperation a rdfs:Class, owl:Class ;
     rdfs:label "Statistical operation"@en, "Opération statistique"@fr ;
     rdfs:subClassOf prov:Activity ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> 
+    dcterms:isPartOf insee:StatisticalOperationSeries .
 
 # Convenience (abstract) class; use DC hasPart/isPartOf to link SOG and SO
 insee:StatisticalOperationGroup a rdfs:Class, owl:Class ;
