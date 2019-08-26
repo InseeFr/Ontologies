@@ -55,7 +55,8 @@ insee:StatisticalOperationGroup a rdfs:Class, owl:Class ;
 insee:StatisticalOperationSeries a rdfs:Class, owl:Class ;
     rdfs:label "Statistical operation series"@en, "Série d'opérations statistiques"@fr ;
     rdfs:subClassOf insee:StatisticalOperationGroup ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base>
+    dcterms:hasPart insee:StatisticalOperation .
 
 insee:StatisticalOperationFamily a rdfs:Class, owl:Class ;
     rdfs:label "Statistical operation family"@en, "Famille d'opérations statistiques"@fr ;
