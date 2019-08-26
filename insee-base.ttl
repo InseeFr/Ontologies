@@ -13,6 +13,7 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix insee: <http://rdf.insee.fr/def/base#> .
+@prefix coos: <http://id.unece.org/def/coos#> .
 
 #################################################################
 # Ontology
@@ -65,12 +66,14 @@ insee:StatisticalOperationFamily a rdfs:Class, owl:Class ;
 insee:StatisticalOrganization a rdfs:Class, owl:Class ;
     rdfs:label "Statistical organization"@en, "Organisation statistique"@fr ;
     rdfs:subClassOf org:Organization, prov:Organization, dcterms:Agent ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base>
+    owl:sameAs coos:StatisticalOrganization .
 
 insee:NationalStatisticalInstitute a rdfs:Class, owl:Class ;
     rdfs:label "National statistical institute"@en, "Institut national de statistique"@fr ;
     rdfs:subClassOf insee:StatisticalOrganization ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    owl:sameAs coos:NationalStatisticalInstitute .
 
 insee:OtherNationalAuthority a rdfs:Class, owl:Class ;
     rdfs:label "Other national authority"@en, "Autre autorité nationale"@fr ;
