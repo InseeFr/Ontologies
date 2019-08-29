@@ -203,29 +203,39 @@ insee:disseminationStatus a rdf:Property, owl:ObjectProperty ;
 
 # TODO Mettre ici ou sous id.insee.fr/concepts ?
 # TODO Ajouter des commentaires pour les modalités
-insee:StatutDiffusion a skos:Concept ;
+insee:StatutDiffusion rdfs:Class, owl:Class;
+    rdfs:subClassOf skos:Concept ;
     rdfs:label "Statut de diffusion"@fr ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    rdfs:seeAlso <http://id.insee.fr/codes/base/statutsDiffusion> .
 
-<http://id.insee.fr/codes/base/statutsDiffusion/scheme> a skos:ConceptScheme ;
+<http://id.insee.fr/codes/base/statutsDiffusion> a skos:ConceptScheme ;
     rdfs:label "Statuts de diffusion"@fr, "Dissemination statuses"@en ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    skos:notation "statutsDiffusion" ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    rdfs:seeAlso insee:StatutDiffusion ;
+    skos:hasTopConcept <http://id.insee.fr/codes/base/statutDiffusion/Prive> ;
+    skos:hasTopConcept <http://id.insee.fr/codes/base/statutDiffusion/PublicSpecifique> ;
+    skos:hasTopConcept <http://id.insee.fr/codes/base/statutDiffusion/PublicGenerique>.
 	
 <http://id.insee.fr/codes/base/statutDiffusion/Prive> a skos:Concept, insee:StatutDiffusion ;
     skos:prefLabel "Privé"@fr ;
-    skos:inScheme <http://id.insee.fr/codes/base/statutsDiffusion/scheme> ;
+    skos:inScheme <http://id.insee.fr/codes/base/statutsDiffusion> ;
     skos:notation "Prive" ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    skos:topConceptOf <http://id.insee.fr/codes/base/statutsDiffusion> .
 
 <http://id.insee.fr/codes/base/statutDiffusion/PublicSpecifique> a skos:Concept, insee:StatutDiffusion ;
     skos:prefLabel "Public spécifique"@fr ;
-    skos:inScheme <http://id.insee.fr/codes/base/statutsDiffusion/scheme> ;
+    skos:inScheme <http://id.insee.fr/codes/base/statutsDiffusion> ;
     skos:notation "PublicSpecifique" ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    skos:topConceptOf <http://id.insee.fr/codes/base/statutsDiffusion> .
 
 # TODO : peut-être plutôt 'Public général'
 <http://id.insee.fr/codes/base/statutDiffusion/PublicGenerique> a skos:Concept, insee:StatutDiffusion ;
     skos:prefLabel "Public générique"@fr ;
-    skos:inScheme <http://id.insee.fr/codes/base/statutsDiffusion/scheme> ;
+    skos:inScheme <http://id.insee.fr/codes/base/statutsDiffusion> ;
     skos:notation "PublicGenerique" ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    skos:topConceptOf <http://id.insee.fr/codes/base/statutsDiffusion> .
