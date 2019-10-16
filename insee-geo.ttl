@@ -27,8 +27,8 @@
       vann:preferredNamespacePrefix "igeo" ;
       vann:preferredNamespaceUri <http://rdf.insee.fr/def/geo#> ;
       dc:rights "Copyright © 2019 Insee" ;
-      voaf:classNumber "48"^^xsd:integer ;
-      voaf:propertyNumber "44"^^xsd:integer ;
+      voaf:classNumber "29"^^xsd:integer ;
+      voaf:propertyNumber "15"^^xsd:integer ;
       owl:incompatibleWith <http://rdf.insee.fr/geo/ontologie-geo-2006.rdf> ;
       owl:incompatibleWith <http://rdf.insee.fr/geo/ontologie-geo-2012.rdf> ;
       owl:versionInfo "Version 4.0.2 - 2019-05-06" .
@@ -184,7 +184,7 @@ igeo:Region
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:onProperty igeo:subdivisionDirecte ;
-                owl:allValuesFrom (igeo:Departement, igeo:CDCTE)
+                owl:allValuesFrom owl:unionOf (igeo:Departement igeo:CDCTE)
               ] .
 
 igeo:AireUrbaine2010
@@ -266,7 +266,7 @@ igeo:TerritoireFrancais
       rdfs:label "Territoire français"@fr ;
       rdfs:comment "Subdivision administrative ou statistique du territoire français"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:subClassOf igeo:PaysOuTerritoire .
+      rdfs:subClassOf igeo:PaysOuTerritoire ;
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:onProperty igeo:subdivisionDe ;
@@ -552,7 +552,7 @@ igeo:typeDIRIS
 <http://id.insee.fr/codes/geo/typesDEPCI>
       a skos:ConceptScheme ;
       rdfs:label "Type d'EPCI"@fr ;
-      rdfs:seeAlso igeo:TypeDEPCI 
+      rdfs:seeAlso igeo:TypeDEPCI ;
       skos:hasTopConcept <http://id.insee.fr/codes/geo/typeDEPCI/CA> , <http://id.insee.fr/codes/geo/typeDEPCI/CC> , <http://id.insee.fr/codes/geo/typeDEPCI/CU> , <http://id.insee.fr/codes/geo/typeDEPCI/SAN> , <http://id.insee.fr/codes/geo/typeDEPCI/Metro> .
 
 <http://id.insee.fr/codes/geo/typeDEPCI/CA>
