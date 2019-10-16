@@ -13,6 +13,7 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix insee: <http://rdf.insee.fr/def/base#> .
+@prefix coos: <http://id.unece.org/def/coos#> .
 
 #################################################################
 # Ontology
@@ -43,7 +44,8 @@
 insee:StatisticalOperation a rdfs:Class, owl:Class ;
     rdfs:label "Statistical operation"@en, "Opération statistique"@fr ;
     rdfs:subClassOf prov:Activity ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> 
+    dcterms:isPartOf insee:StatisticalOperationSeries .
 
 # Convenience (abstract) class; use DC hasPart/isPartOf to link SOG and SO
 insee:StatisticalOperationGroup a rdfs:Class, owl:Class ;
@@ -53,7 +55,8 @@ insee:StatisticalOperationGroup a rdfs:Class, owl:Class ;
 insee:StatisticalOperationSeries a rdfs:Class, owl:Class ;
     rdfs:label "Statistical operation series"@en, "Série d'opérations statistiques"@fr ;
     rdfs:subClassOf insee:StatisticalOperationGroup ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base>
+    dcterms:hasPart insee:StatisticalOperation .
 
 insee:StatisticalOperationFamily a rdfs:Class, owl:Class ;
     rdfs:label "Statistical operation family"@en, "Famille d'opérations statistiques"@fr ;
@@ -65,16 +68,18 @@ insee:StatisticalOperationFamily a rdfs:Class, owl:Class ;
 insee:StatisticalOrganization a rdfs:Class, owl:Class ;
     rdfs:label "Statistical organization"@en, "Organisation statistique"@fr ;
     rdfs:subClassOf org:Organization, prov:Organization, dcterms:Agent ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base>
+    owl:sameAs coos:StatisticalOrganization .
 
 insee:NationalStatisticalInstitute a rdfs:Class, owl:Class ;
     rdfs:label "National statistical institute"@en, "Institut national de statistique"@fr ;
-    rdfs:subClassOf org:StatisticalOrganization ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    rdfs:subClassOf insee:StatisticalOrganization ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    owl:sameAs coos:NationalStatisticalInstitute .
 
 insee:OtherNationalAuthority a rdfs:Class, owl:Class ;
     rdfs:label "Other national authority"@en, "Autre autorité nationale"@fr ;
-    rdfs:subClassOf org:StatisticalOrganization ;
+    rdfs:subClassOf insee:StatisticalOrganization ;
 	owl:disjointWith insee:NationalStatisticalInstitute ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
 
@@ -83,12 +88,14 @@ insee:OtherNationalAuthority a rdfs:Class, owl:Class ;
 insee:StatisticalProduct a rdfs:Class, owl:Class ;
     rdfs:label "Statistical product"@en, "Produit statistique"@fr ;
     rdfs:subClassOf prov:Entity ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base>
+    owl:sameAs coos:StatisticalProduct .
 
 insee:StatisticalDataset a rdfs:Class, owl:Class ;
     rdfs:label "Statistical dataset"@en, "Jeu de données statistiques"@fr ;
     rdfs:subClassOf insee:StatisticalProduct, dcat:Dataset ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base>
+    owl:sameAs coos:StatisticalDataset .
 
 insee:StatisticalIndicator a rdfs:Class, owl:Class ;
     rdfs:label "Statistical indicator"@en, "Indicateur statistique"@fr ;
@@ -127,7 +134,7 @@ insee:differenceNote a rdf:Property, owl:AnnotationProperty ;
 insee:ministerialDepartment a rdf:Property, owl:DatatypeProperty ;
     rdfs:label "service ministériel"@fr, "ministerial service"@en ;
     rdfs:comment "Indicates if a organizational unit is a service of a ministry"@en ;
-    rdfs:comment "Indicate si un organisme statistique est un service d'un ministère"@fr ;
+    rdfs:comment "Indique si un organisme statistique est un service d'un ministère"@fr ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
     rdfs:domain insee:StatisticalOrganization ;
     rdfs:range xsd:boolean .
@@ -160,27 +167,6 @@ insee:publishedOn a rdf:Property, owl:DatatypeProperty ;
 #################################################################
 # Object properties
 #################################################################
-
-# Version de travail (vérifier que c'est utile)
-
-insee:hasWorkingVersion a rdf:Property, owl:ObjectProperty ;
-    rdfs:label "Version de travail"@fr, "Working version"@en ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
-    rdfs:subPropertyOf pav:hasVersion .
-
-# Dernière version publiée (vérifier que c'est utile)
-
-insee:hasLastPublishedVersion a rdf:Property, owl:ObjectProperty ;
-    rdfs:label "Dernière version publiée"@fr, "Last published version"@en ;
-	rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
-    rdfs:subPropertyOf pav:hasVersion .
-
-# Dernière version validée (vérifier que c'est utile)
-
-insee:hasLastValidatedVersion a rdf:Property, owl:ObjectProperty ;
-    rdfs:label "Dernière version validée"@fr, "Last validated version"@en ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
-    rdfs:subPropertyOf pav:hasVersion .
 
 # Document associé (pourrait être un seeAlso)
 # TODO Valider le nom, pourrait être un verbe
@@ -217,29 +203,39 @@ insee:disseminationStatus a rdf:Property, owl:ObjectProperty ;
 
 # TODO Mettre ici ou sous id.insee.fr/concepts ?
 # TODO Ajouter des commentaires pour les modalités
-insee:StatutDiffusion a skos:Concept ;
+insee:StatutDiffusion rdfs:Class, owl:Class;
+    rdfs:subClassOf skos:Concept ;
     rdfs:label "Statut de diffusion"@fr ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    rdfs:seeAlso <http://id.insee.fr/codes/base/statutsDiffusion> .
 
-<http://id.insee.fr/codes/base/statutsDiffusion/scheme> a skos:ConceptScheme ;
+<http://id.insee.fr/codes/base/statutsDiffusion> a skos:ConceptScheme ;
     rdfs:label "Statuts de diffusion"@fr, "Dissemination statuses"@en ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    skos:notation "statutsDiffusion" ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    rdfs:seeAlso insee:StatutDiffusion ;
+    skos:hasTopConcept <http://id.insee.fr/codes/base/statutDiffusion/Prive> ;
+    skos:hasTopConcept <http://id.insee.fr/codes/base/statutDiffusion/PublicSpecifique> ;
+    skos:hasTopConcept <http://id.insee.fr/codes/base/statutDiffusion/PublicGenerique>.
 	
 <http://id.insee.fr/codes/base/statutDiffusion/Prive> a skos:Concept, insee:StatutDiffusion ;
     skos:prefLabel "Privé"@fr ;
-    skos:inScheme <http://id.insee.fr/codes/base/statutsDiffusion/scheme> ;
+    skos:inScheme <http://id.insee.fr/codes/base/statutsDiffusion> ;
     skos:notation "Prive" ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    skos:topConceptOf <http://id.insee.fr/codes/base/statutsDiffusion> .
 
 <http://id.insee.fr/codes/base/statutDiffusion/PublicSpecifique> a skos:Concept, insee:StatutDiffusion ;
     skos:prefLabel "Public spécifique"@fr ;
-    skos:inScheme <http://id.insee.fr/codes/base/statutsDiffusion/scheme> ;
+    skos:inScheme <http://id.insee.fr/codes/base/statutsDiffusion> ;
     skos:notation "PublicSpecifique" ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    skos:topConceptOf <http://id.insee.fr/codes/base/statutsDiffusion> .
 
 # TODO : peut-être plutôt 'Public général'
 <http://id.insee.fr/codes/base/statutDiffusion/PublicGenerique> a skos:Concept, insee:StatutDiffusion ;
     skos:prefLabel "Public générique"@fr ;
-    skos:inScheme <http://id.insee.fr/codes/base/statutsDiffusion/scheme> ;
+    skos:inScheme <http://id.insee.fr/codes/base/statutsDiffusion> ;
     skos:notation "PublicGenerique" ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    skos:topConceptOf <http://id.insee.fr/codes/base/statutsDiffusion> .
