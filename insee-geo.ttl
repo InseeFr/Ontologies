@@ -11,25 +11,27 @@
 @prefix vann:    <http://purl.org/vocab/vann/> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 @prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
-<http://rdf.insee.fr/def/geo>  a owl:Ontology , voaf:Vocabulary ;
-      cc:license <http://creativecommons.org/licenses/by/3.0/> ;
+
+<http://rdf.insee.fr/def/geo> a owl:Ontology , voaf:Vocabulary ;
+      cc:license <http://creativecommons.org/licenses/by/4.0/> ;
       dcterms:creator [ a foaf:Person ; foaf:name "Franck Cotton" ] ;
       dcterms:contributor [ a foaf:Person ; foaf:name "Bernard Vatant" ] ;
       dcterms:contributor [ a foaf:Person ; foaf:name "Christophe Yon" ] ;
+      dcterms:contributor [ a foaf:Person ; foaf:name "Guillaume Duffes" ] ;
+      dcterms:contributor [ a foaf:Person ; foaf:name "Antoine Dreyer" ] ;
       dcterms:description "Ontologie des objets géographiques de l'Insee, en particulier des territoires administratifs de la France"@fr ;
       dcterms:issued "2019-03-11"^^xsd:date ;
-      dcterms:modified "2019-03-11"^^xsd:date ;
+      dcterms:modified "2019-05-06"^^xsd:date ;
       dcterms:publisher <http://dbpedia.org/resource/INSEE> ;
       dcterms:title "Ontologie géographique de l'Insee"@fr ;
       vann:preferredNamespacePrefix "igeo" ;
       vann:preferredNamespaceUri <http://rdf.insee.fr/def/geo#> ;
       dc:rights "Copyright © 2019 Insee" ;
-      cc:license <http://www.data.gouv.fr/Licence-Ouverte-Open-Licence> ;
       voaf:classNumber "48"^^xsd:integer ;
       voaf:propertyNumber "44"^^xsd:integer ;
       owl:incompatibleWith <http://rdf.insee.fr/geo/ontologie-geo-2006.rdf> ;
       owl:incompatibleWith <http://rdf.insee.fr/geo/ontologie-geo-2012.rdf> ;
-      owl:versionInfo "Version 4.0.0 - 2019-03-11" .
+      owl:versionInfo "Version 4.0.2 - 2019-05-06" .
 
 igeo:Arrondissement
       a owl:Class ;
@@ -39,18 +41,13 @@ igeo:Arrondissement
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:onClass igeo:Departement ;
-                owl:onProperty igeo:subdivisionDe ;
+                owl:onProperty igeo:subdivisionDirecteDe ;
                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
               ] ;
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:allValuesFrom igeo:Commune ;
-                owl:onProperty igeo:subdivision
-              ] ;
-      rdfs:subClassOf
-              [ a owl:Restriction ;
-                owl:hasValue <http://www.geonames.org/ontology#A.ADM3> ;
-                owl:onProperty igeo:codeAdministratifGeonames
+                owl:onProperty igeo:subdivisionDirecte
               ] .
 
 igeo:ArrondissementMunicipal
@@ -62,7 +59,7 @@ igeo:ArrondissementMunicipal
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:onClass igeo:Commune ;
-                owl:onProperty igeo:subdivisionDe ;
+                owl:onProperty igeo:subdivisionDirecteDe ;
                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
               ] .
 
@@ -74,13 +71,8 @@ igeo:Canton
       rdfs:subClassOf igeo:TerritoireAdministratif ;
       rdfs:subClassOf
               [ a owl:Restriction ;
-                owl:onClass igeo:Commune ;
-                owl:onProperty igeo:intersecte
-              ] ;
-      rdfs:subClassOf
-              [ a owl:Restriction ;
                 owl:onClass igeo:Departement ;
-                owl:onProperty igeo:subdivisionDe ;
+                owl:onProperty igeo:subdivisionDirecteDe ;
                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
               ] .
 
@@ -92,13 +84,13 @@ igeo:CantonOuVille
       rdfs:subClassOf igeo:TerritoireStatistique ;
       rdfs:subClassOf
               [ a owl:Restriction ;
-                owl:allValuesFrom igeo:Commune ;
-                owl:onProperty igeo:subdivision
+                owl:onProperty igeo:subdivisionDirecte ;
+                owl:allValuesFrom igeo:Commune
               ] ;
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:onClass igeo:Departement ;
-                owl:onProperty igeo:subdivisionDe ;
+                owl:onProperty igeo:subdivisionDirecteDe ;
                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
               ] .
 
@@ -110,23 +102,8 @@ igeo:Commune
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:onClass igeo:Arrondissement ;
-                owl:onProperty igeo:subdivisionDe ;
-                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
-              ] ;
-      rdfs:subClassOf
-              [ a owl:Restriction ;
-                owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                owl:onProperty igeo:chefLieu
-              ] ;
-      rdfs:subClassOf
-              [ a owl:Restriction ;
-                owl:allValuesFrom igeo:GrandQuartier ;
-                owl:onProperty igeo:subdivision
-              ] ;
-      rdfs:subClassOf
-              [ a owl:Restriction ;
-                owl:hasValue <http://www.geonames.org/ontology#A.ADM4> ;
-                owl:onProperty igeo:codeAdministratifGeonames
+                owl:onProperty igeo:subdivisionDirecteDe ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger
               ] .
 
 igeo:CommuneDeleguee
@@ -137,13 +114,13 @@ igeo:CommuneDeleguee
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:onClass igeo:Commune ;
-                owl:onProperty igeo:subdivisionDe ;
+                owl:onProperty igeo:subdivisionDirecteDe ;
                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
               ] ;
       rdfs:subClassOf
               [ a owl:Restriction ;
-                owl:cardinality "0"^^xsd:nonNegativeInteger ;
-                owl:onProperty igeo:chefLieu
+                owl:onProperty igeo:chefLieu ;
+                owl:cardinality "0"^^xsd:nonNegativeInteger
               ] .
 
 igeo:CommuneAssociee
@@ -154,8 +131,13 @@ igeo:CommuneAssociee
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:onClass igeo:Commune ;
-                owl:onProperty igeo:subdivisionDe ;
+                owl:onProperty igeo:subdivisionDirecteDe ;
                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a owl:Restriction ;
+                owl:onProperty igeo:chefLieu ;
+                owl:cardinality "0"^^xsd:nonNegativeInteger
               ] .
 
 igeo:Departement
@@ -166,18 +148,13 @@ igeo:Departement
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:onClass igeo:Region ;
-                owl:onProperty igeo:subdivisionDe ;
+                owl:onProperty igeo:subdivisionDirecteDe ;
                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
               ] ;
       rdfs:subClassOf
               [ a owl:Restriction ;
-                owl:allValuesFrom igeo:Arrondissement ;
-                owl:onProperty igeo:subdivision
-              ] ;
-      rdfs:subClassOf
-              [ a owl:Restriction ;
-                owl:hasValue <http://www.geonames.org/ontology#A.ADM2> ;
-                owl:onProperty igeo:codeAdministratifGeonames
+                owl:onProperty igeo:subdivisionDirecte ;
+                owl:allValuesFrom igeo:Arrondissement
               ] .
 
 igeo:CDCTE
@@ -189,18 +166,13 @@ igeo:CDCTE
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:onClass igeo:Region ;
-                owl:onProperty igeo:subdivisionDe ;
+                owl:onProperty igeo:subdivisionDirecteDe ;
                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
               ] ;
       rdfs:subClassOf
               [ a owl:Restriction ;
-                owl:allValuesFrom igeo:Arrondissement ;
-                owl:onProperty igeo:subdivision
-              ] ;
-      rdfs:subClassOf
-              [ a owl:Restriction ;
-                owl:hasValue <http://www.geonames.org/ontology#A.ADM2> ;
-                owl:onProperty igeo:codeAdministratifGeonames
+                owl:onProperty igeo:subdivisionDirecte ;
+                owl:allValuesFrom igeo:Arrondissement
               ] .
 
 igeo:Region
@@ -211,18 +183,8 @@ igeo:Region
       rdfs:subClassOf igeo:NUTS2 , igeo:CirconscriptionAdministrative, igeo:CollectiviteTerritoriale ;
       rdfs:subClassOf
               [ a owl:Restriction ;
-                owl:allValuesFrom igeo:Departement ;
-                owl:onProperty igeo:subdivision
-              ] ;
-      rdfs:subClassOf
-              [ a owl:Restriction ;
-                owl:allValuesFrom igeo:CDCTE ;
-                owl:onProperty igeo:subdivision
-              ] ;
-      rdfs:subClassOf
-              [ a owl:Restriction ;
-                owl:hasValue <http://www.geonames.org/ontology#A.ADM1> ;
-                owl:onProperty igeo:codeAdministratifGeonames
+                owl:onProperty igeo:subdivisionDirecte ;
+                owl:allValuesFrom (igeo:Departement, igeo:CDCTE)
               ] .
 
 igeo:AireUrbaine2010
@@ -230,6 +192,7 @@ igeo:AireUrbaine2010
       rdfs:label "Aire urbaine 2010"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:subClassOf igeo:GroupementStatistiqueDeCommunes .
+
 igeo:UniteUrbaine2010
       a owl:Class ;
       rdfs:label "Unité urbaine 2010"@fr ;
@@ -248,62 +211,47 @@ igeo:BassinDeVie2012
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:subClassOf igeo:GroupementStatistiqueDeCommunes .
 
-igeo:EPCI
+igeo:Intercommunalite
       a owl:Class ;
-      rdfs:label "EPCI"@fr ;
-      rdfs:comment "Intercommunalité (Établissement public de coopération intercommunale ou Métropole)"@fr ;
+      rdfs:label "Intercommunalité"@fr ;
+      rdfs:comment "Intercommunalité : Établissement public de coopération intercommunale (EPCI) ou Métropole"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:subClassOf igeo:TerritoireAdministratif ;
       rdfs:subClassOf
               [ a owl:Restriction ;
-                owl:allValuesFrom igeo:Commune ;
-                owl:onProperty igeo:subdivision
+                owl:onProperty igeo:subdivisionDirecte ;
+                owl:allValuesFrom igeo:Commune
               ] .
 
 igeo:GrandQuartier
       a owl:Class ;
       rdfs:label "Grand Quartier"@fr ;
+      rdfs:comment "Grand quartier ou terminé par 00 pour les communes non découpées"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:subClassOf igeo:TerritoireStatistique ;
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:onClass igeo:Commune, igeo:ArrondissementMunicipal ;
-                owl:onProperty igeo:subdivisionDe ;
+                owl:onProperty igeo:subdivisionDirecteDe ;
                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
               ] ;
       rdfs:subClassOf
               [ a owl:Restriction ;
-                owl:allValuesFrom igeo:IRIS ;
-                owl:onProperty igeo:subdivision
+                owl:onProperty igeo:subdivisionDirecte ;
+                owl:allValuesFrom igeo:IRIS
               ] .
+
 igeo:IRIS
       a owl:Class ;
       rdfs:label "Iris"@fr ;
-      rdfs:comment "Zones infra communales de plus de 2000 habitants"@fr ;
+      rdfs:comment "Zones infra communales de plus de 2000 habitants (ou code terminé par 0000 pour les communes non découpées)"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:subClassOf igeo:TerritoireStatistique ;
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:onClass igeo:GrandQuartier ;
-                owl:onProperty igeo:subdivisionDe ;
+                owl:onProperty igeo:subdivisionDirecteDe ;
                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
-              ] .
-
-igeo:TRIRIS
-      a owl:Class ;
-      rdfs:label "Triris"@fr ;
-      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:subClassOf igeo:TerritoireStatistique ;
-      rdfs:subClassOf
-              [ a owl:Restriction ;
-                owl:onClass igeo:Commune ;
-                owl:onProperty igeo:subdivisionDe ;
-                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
-              ] ;
-      rdfs:subClassOf
-              [ a owl:Restriction ;
-                owl:allValuesFrom igeo:IRIS ;
-                owl:onProperty igeo:subdivision
               ] .
 
 igeo:TerritoireAdministratif
@@ -319,24 +267,23 @@ igeo:TerritoireFrancais
       rdfs:comment "Subdivision administrative ou statistique du territoire français"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:subClassOf igeo:PaysOuTerritoire .
-      # ;
-      # rdfs:subClassOf
-              # [ a owl:Restriction ;
-                # owl:hasValue igeo:france ;
-                # owl:onProperty igeo:subdivisionDe
-              # ] .
+      rdfs:subClassOf
+              [ a owl:Restriction ;
+                owl:onProperty igeo:subdivisionDe ;
+                owl:hasValue igeo:france
+              ] .
 
 igeo:TerritoireStatistique
       a owl:Class ;
       rdfs:label "Territoire statistique"@fr ;
       rdfs:comment "Subdivision du territoire français utilisée pour la production de statistiques"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:subClassOf igeo:TerritoireFrancais .
+      rdfs:subClassOf igeo:PaysOuTerritoire .
 
 igeo:CollectiviteTerritoriale
       a owl:Class ;
       rdfs:label "Collectivité territoriale"@fr ;
-      rdfs:comment "Collectivité territoriale."@fr ;
+      rdfs:comment "Collectivité territoriale (possédant la personnalité juridique)"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:subClassOf igeo:TerritoireAdministratif .
 
@@ -348,8 +295,8 @@ igeo:GroupementStatistiqueDeCommunes
       rdfs:subClassOf igeo:TerritoireStatistique ;
       rdfs:subClassOf
               [ a owl:Restriction ;
-                owl:allValuesFrom igeo:Commune ;
-                owl:onProperty igeo:subdivision
+                owl:onProperty igeo:subdivisionDirecte ;
+                owl:allValuesFrom igeo:Commune
               ] .
 
 igeo:PaysOuTerritoire
@@ -358,7 +305,8 @@ igeo:PaysOuTerritoire
       rdfs:comment "Pays ou subdivision géopolitique d'un pays"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:subClassOf dcterms:Location ;
-      rdfs:subClassOf <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> .
+      rdfs:subClassOf <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> ;
+      rdfs:subClassOf <http://http://www.opengis.net/ont/geosparql#Feature> .
 
 igeo:CirconscriptionAdministrative
       a owl:Class ;
@@ -367,81 +315,31 @@ igeo:CirconscriptionAdministrative
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:subClassOf igeo:TerritoireAdministratif .
 
-igeo:LAU
+igeo:Carreau
       a owl:Class ;
-      rdfs:label "Unité Administrative Locale"@fr , "Local Administrative Unit"@en ;
+      rdfs:label "Carreau"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:subClassOf igeo:PaysOuTerritoire .
-
-igeo:LAU1
-      a owl:Class ;
-      rdfs:label "LAU 1" ;
-      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:subClassOf igeo:LAU .
-
-igeo:LAU2
-      a owl:Class ;
-      rdfs:label "LAU 2" ;
-      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:subClassOf igeo:LAU .
-
-igeo:NUTS
-      a owl:Class ;
-      rdfs:label "Unité Territoriale Statistique"@fr ;
-      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:subClassOf igeo:PaysOuTerritoire .
-
-
-igeo:NUTS1
-      a owl:Class ;
-      rdfs:label "NUTS 1" ;
-      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:subClassOf igeo:NUTS ;
-      rdfs:subClassOf
-              [ a owl:Restriction ;
-                owl:allValuesFrom igeo:NUTS2 ;
-                owl:onProperty igeo:subdivision
-              ] .
-
-igeo:NUTS2
-      a owl:Class ;
-      rdfs:label "NUTS 2" ;
-      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:subClassOf igeo:NUTS ;
-      rdfs:subClassOf
-              [ a owl:Restriction ;
-                owl:allValuesFrom igeo:NUTS3 ;
-                owl:onProperty igeo:subdivision
-              ] .
-
-igeo:NUTS3
-      a owl:Class ;
-      rdfs:label "NUTS 3" ;
-      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:subClassOf igeo:NUTS .
+      rdfs:subClassOf igeo:TerritoireStatistique .
 
 igeo:Pays
       a owl:Class ;
       rdfs:label "Pays"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:subClassOf igeo:PaysOuTerritoire ;
-      rdfs:subClassOf
-              [ a owl:Restriction ;
-                owl:hasValue <http://www.geonames.org/ontology#A.PCLI> ;
-                owl:onProperty igeo:codeAdministratifGeonames
-              ] .
+      rdfs:subClassOf igeo:PaysOuTerritoire .
 
 igeo:TypeDEPCI
       a owl:Class ;
+      rdfs:subClassOf skos:Concept ;
       rdfs:label "Type d'EPCI"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept> .
+      rdfs:seeAlso <http://id.insee.fr/codes/geo/typesDEPCI> .
 
 igeo:TypeDIRIS
       a owl:Class ;
+      rdfs:subClassOf skos:Concept ;
       rdfs:label "Type d'Iris"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept> .
+      rdfs:seeAlso <http://id.insee.fr/codes/geo/typesDIRIS> .
 
 igeo:EvenementGeographique
       a owl:Class ;
@@ -449,12 +347,11 @@ igeo:EvenementGeographique
       rdfs:comment "Classe générique de tous les événements liés à la création, à la suppression ou à la modification de territoires"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:subClassOf <http://purl.org/NET/c4dm/event.owl#Event> .
-# ChangeEvent ?
 
 igeo:codeINSEE
       a owl:DatatypeProperty ;
       rdfs:label "code Insee"@fr ;
-      rdfs:comment "Code donné par l'Insee au territoire."@fr ;
+      rdfs:comment "Code donné par l'Insee au territoire"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:PaysOuTerritoire ;
       rdfs:range xsd:token .
@@ -492,7 +389,7 @@ igeo:nomEPCI
 igeo:date
       a owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:label "date"@fr ;
-      rdfs:comment "Date de la modification"@fr ;
+      rdfs:comment "Date de l'événement"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:EvenementGeographique ;
       rdfs:range xsd:date ;
@@ -541,16 +438,6 @@ igeo:chefLieuCommuneNouvelle
       rdfs:range igeo:CommuneDeleguee ;
       rdfs:subPropertyOf igeo:chefLieu .
 
-igeo:codeAdministratifGeonames
-      a owl:FunctionalProperty , owl:ObjectProperty ;
-      rdfs:domain igeo:TerritoireAdministratif;
-      rdfs:range
-               [ a owl:Restriction ;
-                owl:hasValue <http://www.geonames.org/ontology#A> ;
-                owl:onProperty skos:inScheme
-               ] ;
-      rdfs:label "code administratif Geonames"@fr .
-
 igeo:prefecture
       a owl:ObjectProperty ;
       rdfs:label "préfecture de département"@fr ;
@@ -578,7 +465,7 @@ igeo:sousPrefecture
 igeo:subdivision
       a owl:TransitiveProperty , owl:ObjectProperty ;
       rdfs:label "subdivision"@fr ;
-      rdfs:comment "Une subdivision du territoire" ;
+      rdfs:comment "Le territoire objet est subdivision du territoire sujet"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:PaysOuTerritoire ;
       rdfs:range igeo:PaysOuTerritoire ;
@@ -588,7 +475,7 @@ igeo:subdivision
 igeo:subdivisionDe
       a owl:TransitiveProperty , owl:ObjectProperty ;
       rdfs:label "subdivision de"@fr ;
-      rdfs:comment "Un territoire dont le sujet est une subdivision" ;
+      rdfs:comment "Le territoire sujet est subdivision du territoire objet"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:PaysOuTerritoire ;
       rdfs:range igeo:PaysOuTerritoire ;
@@ -596,19 +483,19 @@ igeo:subdivisionDe
       owl:inverseOf igeo:subdivision .
 
 igeo:subdivisionDirecte
-      a owl:TransitiveProperty , owl:ObjectProperty ;
-      rdfs:label "subdivision"@fr ;
-      rdfs:comment "Une subdivision du territoire" ;
+      a owl:ObjectProperty ;
+      rdfs:label "subdivision directe"@fr ;
+      rdfs:comment "Le territoire objet est subdivision directe du territoire sujet"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:PaysOuTerritoire ;
       rdfs:range igeo:PaysOuTerritoire ;
       rdfs:subPropertyOf dcterms:hasPart ;
-      owl:inverseOf igeo:subdivisionDe .
+      owl:inverseOf igeo:subdivisionDirecteDe .
 
 igeo:subdivisionDirecteDe
       a owl:TransitiveProperty , owl:ObjectProperty ;
-      rdfs:label "subdivision de"@fr ;
-      rdfs:comment "Un territoire dont le sujet est une subdivision" ;
+      rdfs:label "subdivision directe de"@fr ;
+      rdfs:comment "Le territoire sujet est subdivision directe du territoire objet"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:PaysOuTerritoire ;
       rdfs:range igeo:PaysOuTerritoire ;
@@ -618,29 +505,27 @@ igeo:subdivisionDirecteDe
 igeo:territoireCommunAvec
       a owl:SymmetricProperty , owl:ObjectProperty ;
       rdfs:label "a un territoire en commun avec"@fr ;
-      rdfs:comment "Deux territoires partagent un territoire commun." ;
+      rdfs:comment "Deux territoires partagent un territoire commun"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:PaysOuTerritoire ;
       rdfs:range igeo:PaysOuTerritoire .
       # rdfs:subPropertyOf dcterms:hasPart ;
 
-igeo:commence
+igeo:cree
       a owl:ObjectProperty ;
-      rdfs:label "commence"@fr ;
-      rdfs:comment "Un territoire dont le sujet est l'événement créateur" ;
+      rdfs:label "crée"@fr ;
+      rdfs:comment "Associe un événement à un territoire qu'il crée"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:EvenementGeographique ;
       rdfs:range igeo:PaysOuTerritoire .
-      # rdfs:subPropertyOf dcterms:isPartOf ;
 
-igeo:termine
+igeo:detruit
       a owl:ObjectProperty ;
-      rdfs:label "termine"@fr ;
-      rdfs:comment "Un territoire dont le sujet est l'événement destructeur" ;
+      rdfs:label "détruit"@fr ;
+      rdfs:comment "Associe un événement à un territoire qu'il détruit"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:EvenementGeographique ;
       rdfs:range igeo:PaysOuTerritoire .
-      # rdfs:subPropertyOf dcterms:isPartOf ;
 
 igeo:typeDEPCI
       a owl:ObjectProperty ;
@@ -650,7 +535,7 @@ igeo:typeDEPCI
       rdfs:range
             [ a owl:Restriction ;
               owl:onProperty skos:inScheme ;
-              owl:hasValue <http://id.insee.fr/codes/geo/typeDEPCI/liste>
+              owl:hasValue <http://id.insee.fr/codes/geo/typesDEPCI>
             ] .
 
 igeo:typeDIRIS
@@ -661,69 +546,73 @@ igeo:typeDIRIS
       rdfs:range
           [ a owl:Restriction ;
             owl:onProperty skos:inScheme ;
-            owl:hasValue <http://id.insee.fr/codes/geo/typeDIRIS/liste>
+            owl:hasValue <http://id.insee.fr/codes/geo/typesDIRIS>
           ] .
 
-<http://id.insee.fr/codes/geo/typeDEPCI/liste>
+<http://id.insee.fr/codes/geo/typesDEPCI>
       a skos:ConceptScheme ;
-      rdfs:label "Type d'EPCI"@fr .
+      rdfs:label "Type d'EPCI"@fr ;
+      rdfs:seeAlso igeo:TypeDEPCI 
+      skos:hasTopConcept <http://id.insee.fr/codes/geo/typeDEPCI/CA> , <http://id.insee.fr/codes/geo/typeDEPCI/CC> , <http://id.insee.fr/codes/geo/typeDEPCI/CU> , <http://id.insee.fr/codes/geo/typeDEPCI/SAN> , <http://id.insee.fr/codes/geo/typeDEPCI/Metro> .
 
 <http://id.insee.fr/codes/geo/typeDEPCI/CA>
       a skos:Concept ;
       a igeo:TypeDEPCI ;
-      skos:inScheme <http://id.insee.fr/codes/geo/typeDEPCI/liste> ;
+      skos:inScheme <http://id.insee.fr/codes/geo/typesDEPCI> ;
       skos:prefLabel "Communauté d'agglomération"@fr ;
-      skos:notation "CA".
+      skos:notation "CA" .
 
 <http://id.insee.fr/codes/geo/typeDEPCI/CC>
       a skos:Concept ;
       a igeo:TypeDEPCI ;
-      skos:inScheme <http://id.insee.fr/codes/geo/typeDEPCI/liste> ;
+      skos:inScheme <http://id.insee.fr/codes/geo/typesDEPCI> ;
       skos:prefLabel "Communauté de communes"@fr ;
-      skos:notation "CC".
+      skos:notation "CC" .
 
 <http://id.insee.fr/codes/geo/typeDEPCI/CU>
       a skos:Concept ;
       a igeo:TypeDEPCI ;
-      skos:inScheme <http://id.insee.fr/codes/geo/typeDEPCI/liste> ;
+      skos:inScheme <http://id.insee.fr/codes/geo/typesDEPCI> ;
       skos:prefLabel "Communauté urbaine"@fr ;
-      skos:notation "CU".
+      skos:notation "CU" .
 
 <http://id.insee.fr/codes/geo/typeDEPCI/SAN>
       a skos:Concept ;
       a igeo:TypeDEPCI ;
-      skos:inScheme <http://id.insee.fr/codes/geo/typeDEPCI/liste> ;
+      skos:inScheme <http://id.insee.fr/codes/geo/typesDEPCI> ;
       skos:prefLabel "Syndicat d'agglomération nouvelle"@fr ;
-      skos:notation "SAN".
+      skos:notation "SAN" .
 
 <http://id.insee.fr/codes/geo/typeDEPCI/Metro>
       a skos:Concept ;
       a igeo:TypeDEPCI ;
-      skos:inScheme <http://id.insee.fr/codes/geo/typeDEPCI/liste> ;
+      skos:inScheme <http://id.insee.fr/codes/geo/typesDEPCI> ;
       skos:prefLabel "Métropole"@fr ;
-      skos:notation "Metro".
+      skos:notation "Metro" .
 
-<http://id.insee.fr/codes/geo/typeDIRIS/liste>
+<http://id.insee.fr/codes/geo/typesDIRIS>
       a skos:ConceptScheme ;
-      rdfs:label "Type d'Iris"@fr .
+      rdfs:label "Type d'Iris"@fr ;
+      rdfs:seeAlso igeo:TypeDIRIS ;
+      skos:hasTopConcept <http://id.insee.fr/codes/geo/typeDIRIS/A> , <http://id.insee.fr/codes/geo/typeDIRIS/D> , <http://id.insee.fr/codes/geo/typeDIRIS/H> .
 
 <http://id.insee.fr/codes/geo/typeDIRIS/A>
       a skos:Concept ;
       a igeo:TypeDIRIS ;
-      skos:inScheme <http://id.insee.fr/codes/geo/typeDIRIS/liste> ;
+      skos:inScheme <http://id.insee.fr/codes/geo/typesDIRIS> ;
       skos:prefLabel "Iris d'activité"@fr ;
-      skos:notation "A".
+      skos:notation "A" .
 
 <http://id.insee.fr/codes/geo/typeDIRIS/D>
       a skos:Concept ;
       a igeo:TypeDIRIS ;
-      skos:inScheme <http://id.insee.fr/codes/geo/typeDIRIS/liste> ;
+      skos:inScheme <http://id.insee.fr/codes/geo/typesDIRIS> ;
       skos:prefLabel "Iris divers"@fr ;
-      skos:notation "D".
+      skos:notation "D" .
 
 <http://id.insee.fr/codes/geo/typeDIRIS/H>
       a skos:Concept ;
       a igeo:TypeDIRIS ;
-      skos:inScheme <http://id.insee.fr/codes/geo/typeDIRIS/liste> ;
+      skos:inScheme <http://id.insee.fr/codes/geo/typesDIRIS> ;
       skos:prefLabel "Iris d'habitat"@fr ;
-      skos:notation "H".
+      skos:notation "H" .
