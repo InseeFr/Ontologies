@@ -270,7 +270,7 @@ igeo:TerritoireFrancais
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:onProperty igeo:subdivisionDe ;
-                owl:hasValue igeo:france
+                owl:hasValue <http://id.insee.fr/geo/pays/france>
               ] .
 
 igeo:TerritoireStatistique
@@ -616,3 +616,25 @@ igeo:typeDIRIS
       skos:inScheme <http://id.insee.fr/codes/geo/typesDIRIS> ;
       skos:prefLabel "Iris d'habitat"@fr ;
       skos:notation "H" .
+
+
+# Individuals
+
+<http://id.insee.fr/geo/pays/france>
+      a igeo:Pays ;
+      rdfs:label "France"@fr ;
+      rdfs:comment "La France ('France entière' est parfois utilisé) comprend les 96 départements d'Europe et les 5 départements d'Outre-mer : Guadeloupe, Martinique, Guyane, La Réunion et Mayotte (depuis avril 2011), soit 101 départements. Cet ensemble est celui qui fait partie de l'Union européenne."@fr ;
+      igeo:codeISO "FR" ;
+      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> .
+
+<http://id.insee.fr/geo/territoireFrancais/franceMetropolitaine>
+      a igeo:TerritoireFrancais ;
+      rdfs:label "France métropolitaine"@fr ;
+      rdfs:comment "La France métropolitaine comprend les 96 départements d'Europe."@fr ;
+      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> .
+
+<http://id.insee.fr/geo/territoireFrancais/territoireDeLaRepubliqueFrancaise>
+      a igeo:TerritoireFrancais ;
+      rdfs:label "Territoire de la République française"@fr ;
+      rdfs:comment "Le Territoire de la République française comprend la France et les territoires suivants : Nouvelle-Calédonie, Polynésie française, îles Wallis et Futuna, Terres australes et antarctiques françaises, îles éparses de l'Océan indien, ainsi que la collectivité territoriale à statut particulier : Saint-Pierre-et-Miquelon."@fr ;
+      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> .
