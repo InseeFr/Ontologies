@@ -184,7 +184,7 @@ igeo:Region
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:onProperty igeo:subdivisionDirecte ;
-                owl:allValuesFrom owl:unionOf ( igeo:Departement igeo:CDCTE )
+                owl:allValuesFrom ( igeo:Departement igeo:CDCTE )
               ] .
 
 igeo:AireUrbaine2010
