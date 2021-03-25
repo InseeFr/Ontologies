@@ -157,9 +157,9 @@ igeo:Departement
                 owl:allValuesFrom igeo:Arrondissement
               ] .
 
-igeo:CDCTE
+igeo:CollectiviteTerritorialeAyantLesCompetencesDepartementales
       a owl:Class ;
-      rdfs:label "Conseil départemental ou collectivité territoriale équivalente"@fr ;
+      rdfs:label "Collectivité territoriale ayant les compétences départementales"@fr ;
       rdfs:comment "Conseil départemental, métropole de Lyon ou collectivité territoriale unique"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:subClassOf igeo:CollectiviteTerritoriale ;
@@ -184,7 +184,7 @@ igeo:Region
       rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:onProperty igeo:subdivisionDirecte ;
-                owl:allValuesFrom ( igeo:Departement igeo:CDCTE )
+                owl:allValuesFrom ( igeo:Departement igeo:CollectiviteTerritorialeAyantLesCompetencesDepartementales )
               ] .
 
 igeo:AireUrbaine2010
