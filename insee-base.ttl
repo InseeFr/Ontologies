@@ -13,6 +13,7 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix insee: <http://rdf.insee.fr/def/base#> .
+@prefix igeo: <http://rdf.insee.fr/def/geo#> .
 
 #################################################################
 # Ontology
@@ -127,7 +128,7 @@ insee:differenceNote a rdf:Property, owl:AnnotationProperty ;
 insee:ministerialDepartment a rdf:Property, owl:DatatypeProperty ;
     rdfs:label "service ministériel"@fr, "ministerial service"@en ;
     rdfs:comment "Indicates if a organizational unit is a service of a ministry"@en ;
-    rdfs:comment "Indicate si un organisme statistique est un service d'un ministère"@fr ;
+    rdfs:comment "Indique si un organisme statistique est un service d'un ministère"@fr ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
     rdfs:domain insee:StatisticalOrganization ;
     rdfs:range xsd:boolean .
@@ -200,13 +201,22 @@ insee:legalMaterial a rdf:Property, owl:ObjectProperty ;
 # Statut de diffusion
 
 insee:disseminationStatus a rdf:Property, owl:ObjectProperty ;
-    rdfs:label "Statut de diffusion"@fr, "Dissemination status"@fr ;
+    rdfs:label "Statut de diffusion"@fr, "Dissemination status"@en ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
     rdfs:range
         [ a owl:Restriction ;
             owl:onProperty skos:inScheme ;
             owl:hasValue <http://id.insee.fr/codes/base/statutsDiffusion/scheme>
         ] .
+
+# Catégorie juridique (s'applique à des territoires administratifs, des entreprises...)
+
+insee:categorieJuridique a rdf:Property, owl:ObjectProperty ;
+    rdfs:label "Catégorie juridique"@fr, "Legal category"@en ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    rdfs:comment "Codé au niveau le plus fin de la nomenclature des catégories juridique"@fr, "Coded at the finest level of the classification of legal categories"@en ;
+    rdfs:domain igeo:TerritoireAdministratif ;
+    rdfs:range <http://id.insee.fr/concepts/cj/cjNiveauIII> .
 
 
 #################################################################
