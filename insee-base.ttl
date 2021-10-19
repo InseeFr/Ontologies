@@ -29,10 +29,10 @@
     dc:creator "Franck Cotton" ;
     vann:preferredNamespacePrefix "insee" ;
     vann:preferredNamespaceUri <http://rdf.insee.fr/def/base#> ;
-    dc:rights "Copyright © 2017 INSEE" ;
+    dc:rights "Copyright © 2021 INSEE" ;
     cc:license <http://creativecommons.org/licenses/by/4.0/> ;
-    voaf:classNumber "7"^^xsd:integer ;
-    voaf:propertyNumber "11"^^xsd:integer ;
+    voaf:classNumber "12"^^xsd:integer ;
+    voaf:propertyNumber "10"^^xsd:integer ;
     owl:versionInfo "Version 0.4 - 2017-07-11" , "Version 0.5 - 2021-10-19" .
 
 
