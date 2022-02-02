@@ -46,7 +46,7 @@
 insee:StatisticalOperation a rdfs:Class, owl:Class ;
     rdfs:label "Statistical operation"@en, "Opération statistique"@fr ;
     rdfs:subClassOf prov:Activity ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> 
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
     dcterms:isPartOf insee:StatisticalOperationSeries .
 
 # Convenience (abstract) class; use DC hasPart/isPartOf to link SOG and SO
@@ -57,7 +57,7 @@ insee:StatisticalOperationGroup a rdfs:Class, owl:Class ;
 insee:StatisticalOperationSeries a rdfs:Class, owl:Class ;
     rdfs:label "Statistical operation series"@en, "Série d'opérations statistiques"@fr ;
     rdfs:subClassOf insee:StatisticalOperationGroup ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base>
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
     dcterms:hasPart insee:StatisticalOperation .
 
 insee:StatisticalOperationFamily a rdfs:Class, owl:Class ;
@@ -70,7 +70,7 @@ insee:StatisticalOperationFamily a rdfs:Class, owl:Class ;
 insee:StatisticalOrganization a rdfs:Class, owl:Class ;
     rdfs:label "Statistical organization"@en, "Organisation statistique"@fr ;
     rdfs:subClassOf org:Organization, prov:Organization, dcterms:Agent ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base>
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
     owl:sameAs coos:StatisticalOrganization .
 
 insee:NationalStatisticalInstitute a rdfs:Class, owl:Class ;
@@ -90,13 +90,13 @@ insee:OtherNationalAuthority a rdfs:Class, owl:Class ;
 insee:StatisticalProduct a rdfs:Class, owl:Class ;
     rdfs:label "Statistical product"@en, "Produit statistique"@fr ;
     rdfs:subClassOf prov:Entity ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base>
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
     owl:sameAs coos:StatisticalProduct .
 
 insee:StatisticalDataset a rdfs:Class, owl:Class ;
     rdfs:label "Statistical dataset"@en, "Jeu de données statistiques"@fr ;
     rdfs:subClassOf insee:StatisticalProduct, dcat:Dataset ;
-    rdfs:isDefinedBy <http://rdf.insee.fr/def/base>
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
     owl:sameAs coos:StatisticalDataset .
 
 insee:StatisticalIndicator a rdfs:Class, owl:Class ;
@@ -214,7 +214,7 @@ insee:categorieJuridique a rdf:Property, owl:ObjectProperty ;
 
 # TODO Mettre ici ou sous id.insee.fr/concepts ?
 # TODO Ajouter des commentaires pour les modalités
-insee:StatutDiffusion rdfs:Class, owl:Class;
+insee:StatutDiffusion a rdfs:Class, owl:Class;
     rdfs:subClassOf skos:Concept ;
     rdfs:label "Statut de diffusion"@fr ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
