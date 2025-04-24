@@ -32,8 +32,8 @@
     dc:rights "Copyright © 2021 INSEE" ;
     cc:license <http://creativecommons.org/licenses/by/4.0/> ;
     voaf:classNumber "12"^^xsd:integer ;
-    voaf:propertyNumber "10"^^xsd:integer ;
-    owl:versionInfo "Version 0.4 - 2017-07-11" , "Version 0.5 - 2021-10-19" .
+    voaf:propertyNumber "11"^^xsd:integer ;
+    owl:versionInfo "Version 0.4 - 2017-07-11" , "Version 0.5 - 2021-10-19", "Version 0.6 - 2025-04-24" .
 
 
 #################################################################
@@ -204,6 +204,12 @@ insee:categorieJuridique a rdf:Property, owl:ObjectProperty ;
     rdfs:comment "Codé au niveau le plus fin de la nomenclature des catégories juridique"@fr, "Coded at the finest level of the classification of legal categories"@en ;
     rdfs:domain igeo:TerritoireAdministratif ;
     rdfs:range <http://id.insee.fr/concepts/cj/cjNiveauIII> .
+
+# Service collecteur des données
+
+insee:dataCollector a rdf:Property, owl:ObjectProperty ;
+    rdfs:label "Service collecteur des données"@fr, "Data collector"@en ;
+    rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
 
 
 #################################################################
