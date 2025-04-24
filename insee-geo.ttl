@@ -21,17 +21,17 @@
       dcterms:contributor [ a foaf:Person ; foaf:name "Antoine Dreyer" ] ;
       dcterms:description "Ontologie des objets géographiques de l'Insee, en particulier des territoires administratifs de la France"@fr ;
       dcterms:issued "2019-03-11"^^xsd:date ;
-      dcterms:modified "2019-05-06"^^xsd:date ;
+      dcterms:modified "2025-04-24"^^xsd:date ;
       dcterms:publisher <http://dbpedia.org/resource/INSEE> ;
       dcterms:title "Ontologie géographique de l'Insee"@fr ;
       vann:preferredNamespacePrefix "igeo" ;
       vann:preferredNamespaceUri <http://rdf.insee.fr/def/geo#> ;
       dc:rights "Copyright © 2019 Insee" ;
-      voaf:classNumber "29"^^xsd:integer ;
-      voaf:propertyNumber "15"^^xsd:integer ;
+      voaf:classNumber "37"^^xsd:integer ;
+      voaf:propertyNumber "25"^^xsd:integer ;
       owl:incompatibleWith <http://rdf.insee.fr/geo/ontologie-geo-2006.rdf> ;
       owl:incompatibleWith <http://rdf.insee.fr/geo/ontologie-geo-2012.rdf> ;
-      owl:versionInfo "Version 4.0.2 - 2019-05-06" .
+      owl:versionInfo "Version 5.0.0 - 2025-04-24" .
 
 igeo:Arrondissement
       a owl:Class ;
@@ -327,13 +327,6 @@ igeo:Pays
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:subClassOf igeo:PaysOuTerritoire .
 
-igeo:TypeDEPCI
-      a owl:Class ;
-      rdfs:subClassOf skos:Concept ;
-      rdfs:label "Type d'EPCI"@fr ;
-      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:seeAlso <http://id.insee.fr/codes/geo/typesDEPCI> .
-
 igeo:TypeDIRIS
       a owl:Class ;
       rdfs:subClassOf skos:Concept ;
@@ -347,6 +340,77 @@ igeo:EvenementGeographique
       rdfs:comment "Classe générique de tous les événements liés à la création, à la suppression ou à la modification de territoires"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:subClassOf <http://purl.org/NET/c4dm/event.owl#Event> .
+
+igeo:Clipperton
+      a owl:Class ;
+      rdfs:label "Île Clipperton"@fr ;
+      rdfs:comment "L'île Clipperton, aussi appelée île de Clipperton, Clipperton, île de la Passion ou La Passion-Clipperton, est une collectivité unique ne possédant aucun statut au sein de l'Union européenne et ne relevant pas non plus du statut des départements français ni des DROM-COM."@fr ;
+      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
+      rdfs:subClassOf igeo:TerritoireFrancais .
+
+igeo:CollectiviteDOutreMer
+      a owl:Class ;
+      rdfs:label "Collectivité d'outre-mer"@fr ;
+      rdfs:comment "Les collectivités d'outre-mer (COM) sont des collectivités territoriales françaises d'outre-mer, qui sont soumises au régime juridique de spécialité législative tel que défini par l'article 74 de la Constitution de la Cinquième République."@fr ;
+      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
+      rdfs:subClassOf igeo:CollectiviteTerritoriale .
+
+igeo:Condominium
+      a owl:Class ;
+      rdfs:label "Condominium"@fr ;
+      rdfs:comment "Un condominium est, en droit international public, un territoire sur lequel plusieurs États souverains exercent une souveraineté conjointe au terme d'un accord formel."@fr ;
+      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
+      rdfs:subClassOf igeo:PaysOuTerritoire .
+	  
+igeo:CirconscriptionTerritoriale
+      a owl:Class ;
+      rdfs:label "Circonscription territoriale"@fr ;
+      rdfs:comment "Correspond à un royaume coutumier d'une collectivité d'outre-mer (Wallis-et-Futuna)"@fr ;
+      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
+      rdfs:subClassOf igeo:TerritoireAdministratif ;
+	rdfs:subClassOf
+              [ a owl:Restriction ;
+                owl:onClass igeo:CollectiviteDOutreMer ;
+                owl:onProperty igeo:subdivisionDirecteDe ;
+                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+              ] .
+
+igeo:District
+      a owl:Class ;
+      rdfs:label "Circonscription territoriale"@fr ;
+      rdfs:comment "Correspond à une subdivision d'une collectivité d'outre-mer (Terres australes et antarctiques françaises)"@fr ;
+      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
+      rdfs:subClassOf igeo:TerritoireAdministratif ;
+	rdfs:subClassOf
+              [ a owl:Restriction ;
+                owl:onClass igeo:CollectiviteDOutreMer ;
+                owl:onProperty igeo:subdivisionDirecteDe ;
+                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+              ] .
+
+igeo:ZoneDEmploi2020
+      a owl:Class ;
+      rdfs:label "Zone d'emploi 2020"@fr ;
+      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
+      rdfs:subClassOf igeo:GroupementStatistiqueDeCommunes .
+	  
+igeo:AireDAttractionDesVilles2020
+      a owl:Class ;
+      rdfs:label "Aire d'attraction des villes 2020"@fr ;
+      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
+      rdfs:subClassOf igeo:GroupementStatistiqueDeCommunes .
+
+igeo:BassinDeVie2022
+      a owl:Class ;
+      rdfs:label "Bassin de vie 2022"@fr ;
+      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
+      rdfs:subClassOf igeo:GroupementStatistiqueDeCommunes .
+
+igeo:UniteUrbaine2020
+      a owl:Class ;
+      rdfs:label "Unité urbaine 2020"@fr ;
+      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
+      rdfs:subClassOf igeo:GroupementStatistiqueDeCommunes .
 
 igeo:codeINSEE
       a owl:DatatypeProperty ;
@@ -379,12 +443,21 @@ igeo:nomSansArticle
       rdfs:domain igeo:PaysOuTerritoire ;
       rdfs:range xsd:token .
 
-igeo:nomEPCI
+igeo:nomIntercommunalite
       a owl:DatatypeProperty ;
-      rdfs:label "nom développé de l'EPCI"@fr ;
+      rdfs:label "nom complet de l'intercommunalité"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:domain igeo:EPCI ;
-      rdfs:range xsd:token .
+      rdfs:domain igeo:Intercommunalite ;
+      rdfs:range xsd:token ;
+      rdfs:subPropertyOf igeo:nom .
+
+igeo:nomLong
+      a owl:DatatypeProperty ;
+      rdfs:label "nom long"@fr ;
+      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
+      rdfs:domain igeo:Pays ;
+      rdfs:range xsd:token ;
+      rdfs:subPropertyOf igeo:nom .
 
 igeo:date
       a owl:FunctionalProperty , owl:DatatypeProperty ;
@@ -395,23 +468,39 @@ igeo:date
       rdfs:range xsd:date ;
       rdfs:subPropertyOf dcterms:date .
 
-igeo:dateDebut
-      a owl:FunctionalProperty , owl:DatatypeProperty ;
-      rdfs:label "date de création"@fr ;
-      rdfs:comment "Date de création"@fr ;
+igeo:codeArticle
+      a owl:DatatypeProperty ;
+      rdfs:label "code de l'article d’un nom de territoire"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:PaysOuTerritoire ;
-      rdfs:range xsd:date ;
-      rdfs:subPropertyOf dcterms:date .
+      rdfs:range xsd:token .
 
-igeo:dateFin
-      a owl:FunctionalProperty , owl:DatatypeProperty ;
-      rdfs:label "date de suppression"@fr ;
-      rdfs:comment "Date de suppression"@fr ;
+igeo:codeIso3166alpha2
+      a owl:DatatypeProperty ;
+      rdfs:label "code de pays ISO alpha-2"@fr ;
+      rdfs:comment "Code conforme à la norme ISO 3166-1-alpha-2 ou 3166-3-alpha-2"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:domain igeo:PaysOuTerritoire ;
-      rdfs:range xsd:date ;
-      rdfs:subPropertyOf dcterms:date .
+      rdfs:domain igeo:Pays ;
+      rdfs:range xsd:token ;
+      owl:equivalentProperty gn:countryCode .
+
+igeo:codeIso3166alpha3
+      a owl:DatatypeProperty ;
+      rdfs:label "code de pays ISO alpha-3"@fr ;
+      rdfs:comment "Code conforme à la norme ISO 3166-1-alpha-3 ou 3166-3-alpha-3"@fr ;
+      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
+      rdfs:domain igeo:Pays ;
+      rdfs:range xsd:token ;
+      owl:equivalentProperty gn:countryCode .
+
+igeo:codeIso3166num
+      a owl:DatatypeProperty ;
+      rdfs:label "code de pays ISO numérique"@fr ;
+      rdfs:comment "Code conforme à la norme ISO 3166-1 ou 3166-3 numérique"@fr ;
+      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
+      rdfs:domain igeo:Pays ;
+      rdfs:range xsd:integer ;
+      owl:equivalentProperty gn:countryCode .
 
 igeo:chefLieu
       a owl:FunctionalProperty , owl:ObjectProperty ;
@@ -428,7 +517,6 @@ igeo:bureauCentralisateur
       rdfs:domain igeo:Canton ;
       rdfs:range igeo:Commune ;
       rdfs:subPropertyOf igeo:chefLieu .
-
 
 igeo:chefLieuCommuneNouvelle
       a owl:ObjectProperty ;
@@ -511,7 +599,7 @@ igeo:territoireCommunAvec
       rdfs:range igeo:PaysOuTerritoire .
       # rdfs:subPropertyOf dcterms:hasPart ;
 
-igeo:cree
+igeo:creation
       a owl:ObjectProperty ;
       rdfs:label "crée"@fr ;
       rdfs:comment "Associe un événement à un territoire qu'il crée"@fr ;
@@ -519,24 +607,13 @@ igeo:cree
       rdfs:domain igeo:EvenementGeographique ;
       rdfs:range igeo:PaysOuTerritoire .
 
-igeo:detruit
+igeo:suppression
       a owl:ObjectProperty ;
-      rdfs:label "détruit"@fr ;
-      rdfs:comment "Associe un événement à un territoire qu'il détruit"@fr ;
+      rdfs:label "supprime"@fr ;
+      rdfs:comment "Associe un événement à un territoire qu'il supprime"@fr ;
       rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
       rdfs:domain igeo:EvenementGeographique ;
       rdfs:range igeo:PaysOuTerritoire .
-
-igeo:typeDEPCI
-      a owl:ObjectProperty ;
-      rdfs:label "type d'EPCI"@fr ;
-      rdfs:isDefinedBy <http://rdf.insee.fr/def/geo> ;
-      rdfs:domain igeo:EPCI ;
-      rdfs:range
-            [ a owl:Restriction ;
-              owl:onProperty skos:inScheme ;
-              owl:hasValue <http://id.insee.fr/codes/geo/typesDEPCI>
-            ] .
 
 igeo:typeDIRIS
       a owl:ObjectProperty ;
@@ -549,46 +626,6 @@ igeo:typeDIRIS
             owl:hasValue <http://id.insee.fr/codes/geo/typesDIRIS>
           ] .
 
-<http://id.insee.fr/codes/geo/typesDEPCI>
-      a skos:ConceptScheme ;
-      rdfs:label "Type d'EPCI"@fr ;
-      rdfs:seeAlso igeo:TypeDEPCI ;
-      skos:hasTopConcept <http://id.insee.fr/codes/geo/typeDEPCI/CA> , <http://id.insee.fr/codes/geo/typeDEPCI/CC> , <http://id.insee.fr/codes/geo/typeDEPCI/CU> , <http://id.insee.fr/codes/geo/typeDEPCI/SAN> , <http://id.insee.fr/codes/geo/typeDEPCI/Metro> .
-
-<http://id.insee.fr/codes/geo/typeDEPCI/CA>
-      a skos:Concept ;
-      a igeo:TypeDEPCI ;
-      skos:inScheme <http://id.insee.fr/codes/geo/typesDEPCI> ;
-      skos:prefLabel "Communauté d'agglomération"@fr ;
-      skos:notation "CA" .
-
-<http://id.insee.fr/codes/geo/typeDEPCI/CC>
-      a skos:Concept ;
-      a igeo:TypeDEPCI ;
-      skos:inScheme <http://id.insee.fr/codes/geo/typesDEPCI> ;
-      skos:prefLabel "Communauté de communes"@fr ;
-      skos:notation "CC" .
-
-<http://id.insee.fr/codes/geo/typeDEPCI/CU>
-      a skos:Concept ;
-      a igeo:TypeDEPCI ;
-      skos:inScheme <http://id.insee.fr/codes/geo/typesDEPCI> ;
-      skos:prefLabel "Communauté urbaine"@fr ;
-      skos:notation "CU" .
-
-<http://id.insee.fr/codes/geo/typeDEPCI/SAN>
-      a skos:Concept ;
-      a igeo:TypeDEPCI ;
-      skos:inScheme <http://id.insee.fr/codes/geo/typesDEPCI> ;
-      skos:prefLabel "Syndicat d'agglomération nouvelle"@fr ;
-      skos:notation "SAN" .
-
-<http://id.insee.fr/codes/geo/typeDEPCI/Metro>
-      a skos:Concept ;
-      a igeo:TypeDEPCI ;
-      skos:inScheme <http://id.insee.fr/codes/geo/typesDEPCI> ;
-      skos:prefLabel "Métropole"@fr ;
-      skos:notation "Metro" .
 
 <http://id.insee.fr/codes/geo/typesDIRIS>
       a skos:ConceptScheme ;
