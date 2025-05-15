@@ -47,6 +47,7 @@ insee:StatisticalOperation a rdfs:Class, owl:Class ;
     rdfs:label "Statistical operation"@en, "Opération statistique"@fr ;
     rdfs:subClassOf prov:Activity ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    owl:sameAs coos:StatisticalProgramCycle ;
     dcterms:isPartOf insee:StatisticalOperationSeries .
 
 # Convenience (abstract) class; use DC hasPart/isPartOf to link SOG and SO
@@ -58,6 +59,7 @@ insee:StatisticalOperationSeries a rdfs:Class, owl:Class ;
     rdfs:label "Statistical operation series"@en, "Série d'opérations statistiques"@fr ;
     rdfs:subClassOf insee:StatisticalOperationGroup ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
+    owl:sameAs coos:StatisticalProgram ;
     dcterms:hasPart insee:StatisticalOperation .
 
 insee:StatisticalOperationFamily a rdfs:Class, owl:Class ;
@@ -91,13 +93,13 @@ insee:StatisticalProduct a rdfs:Class, owl:Class ;
     rdfs:label "Statistical product"@en, "Produit statistique"@fr ;
     rdfs:subClassOf prov:Entity ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
-    owl:sameAs coos:StatisticalProduct .
+    owl:sameAs coos:Product .
 
 insee:StatisticalDataset a rdfs:Class, owl:Class ;
     rdfs:label "Statistical dataset"@en, "Jeu de données statistiques"@fr ;
     rdfs:subClassOf insee:StatisticalProduct, dcat:Dataset ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> ;
-    owl:sameAs coos:StatisticalDataset .
+    owl:sameAs coos:Dataset .
 
 insee:StatisticalIndicator a rdfs:Class, owl:Class ;
     rdfs:label "Statistical indicator"@en, "Indicateur statistique"@fr ;
@@ -107,6 +109,7 @@ insee:StatisticalIndicator a rdfs:Class, owl:Class ;
 insee:TimeSeries a rdfs:Class, owl:Class ;
     rdfs:label "Time series"@en, "Serie temporelle"@fr ;
     rdfs:subClassOf insee:StatisticalDataset ;
+    rdfs:subClassOf coos:DimensionalDataset ;
     rdfs:isDefinedBy <http://rdf.insee.fr/def/base> .
 
 	
